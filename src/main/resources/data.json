@@ -1,0 +1,20 @@
+[ { "airport":{
+    "airportName": "Norfolk International Airport(ORF)", "capacity": ["1000", "5000"], "gates": ["5", "25"], "numberOfTravelers": ["250", "1000"]}
+  },
+  { "airport":{
+    "airportName": "Richmond International Airport(RIC)", "capacity": ["1000", "5000"], "gates": ["5", "25"], "numberOfTravelers": ["250", "1000"]}
+  },
+  { "airport":{
+    "airportName": "Miami International Airport(MIA)", "capacity": ["1000", "5000"], "gates":["5", "25"], "numberOfTravelers": ["250", "1000"]}
+  },
+  { "airport": {
+    "airportName": "Ronald Reagan Washington National Airport(DCA)", "capacity": ["1000", "5000"], "gates": ["5", "25"], "numberOfTravelers": ["250", "1000"]}
+  },
+  { "airport": {
+   "airportName": "George Bush Intercontinental Airport(IAH)", "capacity": ["1000", "5000"], "gates": ["5", "25"], "numberOfTravelers": ["250", "1000"]}
+  },
+  {
+    "airport" : {
+    "airportName": "London Heathrow Airport(LHR)", "capacity": ["1000", "5000"], "gates": ["5", "25"], "numberOfTravelers": ["250", "1000"]}
+  }
+]

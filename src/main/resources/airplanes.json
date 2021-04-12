@@ -1,0 +1,77 @@
+[
+  {
+    "airplane": {
+      "name": "Airbus A350",
+      "passengerCount": [
+        "325",
+        "366"
+      ],
+      "cargoAmount": [
+        "280",
+        "316"
+      ],
+      "totalFlights": [
+        "5",
+        "10"
+      ],
+      "fuelCapacity": "130000"
+    }
+  },
+  {
+    "airplane": {
+      "name": "Airbus A380",
+      "passengerCount": [
+        "530",
+        "544"
+      ],
+      "cargoAmount": [
+        "550",
+        "575"
+      ],
+      "totalFlights": [
+        "5",
+        "10"
+      ],
+      "fuelCapacity": "130000"
+    }
+  },
+  {
+    "airplane": {
+      "name": "Boeing 737 Max",
+      "passengerCount": [
+        "126",
+        "188"
+      ],
+      "cargoAmount": [
+        "70",
+        "88"
+      ],
+      "totalFlights": [
+        "5",
+        "10"
+      ],
+      "fuelCapacity": "25817"
+    }
+  },
+  {
+    "airplane": {
+      "name": "Boeing 787",
+      "passengerCount": [
+        "242",
+        "330"
+      ],
+      "cargoAmount": [
+        "228",
+        "251"
+      ],
+      "totalFlights": [
+        "5",
+        "10"
+      ],
+      "fuelCapacity": "126206"
+    }
+  },
+  {
+    "parentCompany": ["Spirit Airlines", "American Airlines", "Delta Airlines", "United Airlines"]
+  }
+]
