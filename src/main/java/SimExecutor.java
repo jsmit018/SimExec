@@ -23,7 +23,7 @@ public class SimExecutor {
         JSONParser jsonParser = new JSONParser();
         JSONParser jsonParserAirplane = new JSONParser();
 
-        try (FileReader fileReader = new FileReader("C:\\Users\\jmsm1\\OneDrive\\Desktop\\Vanderbilt University\\VanderbiltPose\\SimExec-master\\SimExec-master\\src\\main\\resources\\airplanes.json")){
+        try (FileReader fileReader = new FileReader("C:\\Users\\jmsm1\\Documents\\Vanderbilt - Intro to Software\\Final Project - Fixed\\SimExec\\src\\main\\resources\\airplanes.json")){
             Object airplaneObjs = jsonParserAirplane.parse(fileReader);
             JSONArray airportList = (JSONArray) airplaneObjs;
             JSONObject tempCompanyObj = (JSONObject) airportList.get(airportList.size() - 1);
@@ -31,7 +31,6 @@ public class SimExecutor {
             for(int i = 0; i < tempCompanyArray.size(); ++i) {
                 _parentCompanyList.add((String) tempCompanyArray.get(i));
             }
-            //System.out.println(airportList);
             size = airportList.size();
             Airplane.AirplaneParams();
             airportList.forEach(airplane -> AppendAirplanes((JSONObject) airplane));
@@ -43,10 +42,9 @@ public class SimExecutor {
             e.printStackTrace();
         }
 
-        try (FileReader fileReader = new FileReader("C:\\Users\\jmsm1\\OneDrive\\Desktop\\Vanderbilt University\\VanderbiltPose\\SimExec-master\\SimExec-master\\src\\main\\resources\\data.json")){
+        try (FileReader fileReader = new FileReader("C:\\Users\\jmsm1\\Documents\\Vanderbilt - Intro to Software\\Final Project - Fixed\\SimExec\\src\\main\\resources\\data.json")){
             Object airportObj = jsonParser.parse(fileReader);
             JSONArray airportList = (JSONArray) airportObj;
-            //System.out.println(airportList);
             Airport.PopulateAirportParams();
             airportList.forEach(airport -> InstantiateAirports((JSONObject) airport));
         } catch (FileNotFoundException e) {

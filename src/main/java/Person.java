@@ -46,7 +46,7 @@ public class Person {
                 while (destination.equals(_travelList.get(i -1))){
                     destination = destinations.get(RandomNumber.randomInt(0, destinations.size() - 1));
                     if (destination.equals("London Heathrow Airport(LHR)")){
-                        if (this._passport == false)
+                        if (HasPassport() == false)
                             destination = destinations.get(RandomNumber.randomInt(0, destinations.size() - 1));
                     }
                 }

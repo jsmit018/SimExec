@@ -10,7 +10,6 @@ public class Airplane {
     private String _parentCompany;
     private String _airplaneType;
     private List<String> _listOfDestinations;
-    private String _nextDestination;
     private List<String> _executedDestinations;
     private String _flightOrigin;
     public static List<String> _airplaneParameters;
@@ -30,33 +29,19 @@ public class Airplane {
         return _passengerCount;
     }
 
-//    public String get_parentCompany() {
-//        return _parentCompany;
-//    }
-//
-//    public String get_airplaneType() {
-//        return _airplaneType;
-//    }
-
     public Stream<String> get_listOfDestinations() {
         return _listOfDestinations.stream();
     }
-
-//    public String get_nextDestination() {
-//        return _nextDestination;
-//    }
 
     public Stream<String> get_executedDestinations() {
         return _executedDestinations.stream();
     }
 
-//    public String get_flightOrigin() {
-//        return _flightOrigin;
-//    }
-
     public List<String> get_ListOfExecutedDestinations(){
         return _executedDestinations;
     }
+
+    public String get_airplaneType(){ return _airplaneType; }
 
     public void UpdateListOfExecutedDestinations(Airport airport) { _executedDestinations.add(airport.GetName()); }
 
@@ -68,25 +53,25 @@ public class Airplane {
         _passengerCount = 0;
     }
 
-    public void OnboardPassengerCargo(int amountOfCargoToAdd){
-        _flightCargo.AddCargo(amountOfCargoToAdd);
-    }
+//    public void OnboardPassengerCargo(int amountOfCargoToAdd){
+//        _flightCargo.AddCargo(amountOfCargoToAdd);
+//    }
 
-    public void RemovePassengerCargo(){
-        _flightCargo.RemoveCargo();
-    }
+//    public void RemovePassengerCargo(){
+//        _flightCargo.RemoveCargo();
+//    }
 
-    public int GetCargoCapacity(){
-        return _flightCargo.GetCargoQuantityOnboard();
-    }
+//    public int GetCargoCapacity(){
+//        return _flightCargo.GetCargoQuantityOnboard();
+//    }
 
-    public void EmbarkPassengers(int numOfPassengersInAirport){
-        if (numOfPassengersInAirport < _maxNumberOfPassengers){
-            _passengerCount = numOfPassengersInAirport;
-        }
-        else
-            _passengerCount = _maxNumberOfPassengers;
-    }
+//    public void EmbarkPassengers(int numOfPassengersInAirport){
+//        if (numOfPassengersInAirport < _maxNumberOfPassengers){
+//            _passengerCount = numOfPassengersInAirport;
+//        }
+//        else
+//            _passengerCount = _maxNumberOfPassengers;
+//    }
 
     public static void AirplaneParams(){
         _airplaneParameters = new ArrayList<>();
@@ -137,7 +122,6 @@ public class Airplane {
         _maxNumberOfPassengers = passCount;
         _flightCargo = new Cargo(totalCargoCount);
         _parentCompany = parentCompany;
-        _nextDestination = null;
         _flightOrigin = null;
         _numberOfFlights = 0;
         _numberOfTotalFlights = totalFlights;
@@ -161,7 +145,6 @@ public class Airplane {
         _maxNumberOfPassengers = copyPlane._maxNumberOfPassengers;
         _flightCargo = copyPlane._flightCargo;
         _parentCompany = copyPlane._parentCompany;
-        _nextDestination = null;
         _flightOrigin = null;
         _numberOfFlights = 0;
         _numberOfTotalFlights = copyPlane._numberOfTotalFlights;
@@ -242,6 +225,7 @@ public class Airplane {
         if (_airplaneSeatClass.get(className).size() < _seatMap.get(className)) {
             _airplaneSeatClass.get(className).add(personToAdd);
             tempPersonData = null;
+            _passengerCount++;
         }
         return tempPersonData;
     }

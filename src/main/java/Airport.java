@@ -12,7 +12,6 @@ public class Airport extends SimToolTask{
     private int _flightTrackerCounter;
     private SimToolQueue<Person> _baggageCheckQueue;
     private SimToolQueue<Person> _tsaPreCheck;
-    private SimToolQueue<Person> _terminalLobby;
     private boolean _originalPassengers = true;
 
     //Static Functions
@@ -137,17 +136,17 @@ public class Airport extends SimToolTask{
         }
     }
 
-    private class PassengerEntityArrivalEventAction implements EventAction{
-        private Airport _airport;
-        private SimToolQueue _stq;
-
-        PassengerEntityArrivalEventAction(Airport airport, SimToolQueue stq){
-            _airport = airport;
-            _stq = stq;
-        }
-
-        public void Execute(){ _airport.PassengerEntityArrivalEM(_stq); }
-    }
+//    private class PassengerEntityArrivalEventAction implements EventAction{
+//        private Airport _airport;
+//        private SimToolQueue _stq;
+//
+//        PassengerEntityArrivalEventAction(Airport airport, SimToolQueue stq){
+//            _airport = airport;
+//            _stq = stq;
+//        }
+//
+//        public void Execute(){ _airport.PassengerEntityArrivalEM(_stq); }
+//    }
 
     private class TSACheckInEventAction implements EventAction{
         private Airport _airport;
@@ -189,10 +188,7 @@ public class Airport extends SimToolTask{
         _flightTrackerCounter = 0;
         _baggageCheckQueue = new SimToolQueue<>();
         _tsaPreCheck = new SimToolQueue<>();
-        _terminalLobby = new SimToolQueue<>();
         _waitingToBoardQueue = new HashMap<>();
-        //GenerateAirportFootTraffic();
-        //SimExecutor.simExec.ScheduleEventIn(0.0, new ScheduleTravelArrival(this), "Passenger Arrival Event");
     }
 
     public void ScheduleFlights(){
@@ -213,17 +209,6 @@ public class Airport extends SimToolTask{
     }
 
     protected void SendFlightToNextAirport(Airplane outgoingPlane){
-//        List destinations = outgoingPlane.get_listOfDestinations().map(lod -> lod.toString()).collect(Collectors.toList());
-//        int randomDest = RandomNumber.randomInt(0, SimExecutor._destinationsMap.size() - 1);
-//        if (SimExecutor._destinationsMap.get(destinations.get(randomDest))._name.equals(this._name)){
-//            int newRandDest = 0;
-//            do {
-//                newRandDest = RandomNumber.randomInt(0, SimExecutor._destinationsMap.size() - 1);
-//            } while (SimExecutor._destinationsMap.get(destinations.get(newRandDest))._name.equals(this._name));
-//            this.SetNextTask(SimExecutor._destinationsMap.get(destinations.get(randomDest)));
-//        } else {
-//            this.SetNextTask(SimExecutor._destinationsMap.get(destinations.get(randomDest)));
-//        }
         SendFlight(outgoingPlane);
     }
 
@@ -239,7 +224,6 @@ public class Airport extends SimToolTask{
     }
 
     private void GenerateAirportFootTraffic(){
-        //int _numberOfPeopleToGenerate = RandomNumber.randomInt(25,_capacityOfAirport);
         for (int i = 0; i < _numberOfTravelers; ++i){
             Person temp = new Person();
             this.InsertPassengerIntoBaggageCheck(temp);
@@ -280,11 +264,6 @@ public class Airport extends SimToolTask{
             Airplane airplane
     ) {
         System.out.println("Docked, offloading passengers");
-//        int temp = _numberOfTravelers;
-//        this._numberOfTravelers += airplane.get_passengerCount();
-//        System.out.println("Previous traveler count: " + temp + " Number of passengers in airport after offload: " + _numberOfTravelers);
-//        airplane.DebarkPassengers();
-//        airplane.RemovePassengerCargo();
         for (int i = 0; i < airplane.GetSeatSize(); ++i){
             Iterator itr = airplane.SeatClassIterator();
             List temp = airplane.DebarkPlane((String) itr.next());
@@ -300,6 +279,7 @@ public class Airport extends SimToolTask{
                 }
             }
         }
+        airplane.DebarkPassengers();
         if (airplane.RetireAirplane() == true)
             return;
         else
@@ -317,9 +297,6 @@ public class Airport extends SimToolTask{
     private void EmbarkPassengersEM(
             Airplane airplane
     ){
-//        airplane.EmbarkPassengers(this._numberOfTravelers);
-//        this._numberOfTravelers -= airplane.get_passengerCount();
-//        airplane.OnboardPassengerCargo(RandomNumber.randomInt(0, airplane.GetCargoCapacity()));
         List destinations = airplane.get_listOfDestinations().map(lod -> lod.toString()).collect(Collectors.toList());
         int randomDest = RandomNumber.randomInt(0, SimExecutor._destinationsMap.size() - 1);
         if (SimExecutor._destinationsMap.get(destinations.get(randomDest))._name.equals(this._name)){
@@ -373,10 +350,6 @@ public class Airport extends SimToolTask{
                 _waitingToBoardQueue.get(tempPerson.GetTravelersNextDestination()).AddToQueue(tempPerson);
             }
         }
-    }
-
-    private void PassengerEntityArrivalEM(SimToolQueue stq){
-
     }
 
     // Total Airports visit tracker

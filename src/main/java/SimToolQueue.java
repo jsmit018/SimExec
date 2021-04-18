@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimToolQueue<T> {
-    //private T _queue;
     private List<T> _firstInFirstOutQueue;
 
     SimToolQueue(){

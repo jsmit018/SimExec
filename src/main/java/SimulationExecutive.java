@@ -88,10 +88,6 @@ public class SimulationExecutive implements SimulationObject{
             return temp._ea;
         }
 
-//        public boolean IsEmpty(){
-//            return _head != null ? false : true;
-//        }
-
         public int GetNumberOfEventsLeftInEventSet(){
             return _numberOfEvents;
         }
